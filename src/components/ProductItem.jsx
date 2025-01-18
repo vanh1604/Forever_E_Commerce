@@ -4,7 +4,6 @@ import { ShopContext } from "../context/ShopContext";
 
 const ProductItem = ({ id, image = [], name, price }) => {
   const { currency } = useContext(ShopContext);
-  console.log(image);
 
   // Fallback image if none is provided
  

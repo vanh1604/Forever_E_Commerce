@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 import { products } from "../assets/frontend_assets/assets";
 
 // Create the ShopContext
@@ -8,13 +8,21 @@ export const ShopContext = createContext();
 const ShopContextProvider = (props) => {
   const currency = "$"; // Define currency symbol
   const delivery_free = 10; // Define delivery fee
-  const value = { products, currency, delivery_free }; // Context value to share
+  const [search, setSearch] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
+  const value = {
+    products,
+    currency,
+    delivery_free,
+    search,
+    setSearch,
+    showSearch,
+    setShowSearch,
+  }; // Context value to share
 
   // Pass the value to ShopContext.Provider
   return (
-    <ShopContext.Provider value={value}>
-      {props.children}
-    </ShopContext.Provider>
+    <ShopContext.Provider value={value}>{props.children}</ShopContext.Provider>
   );
 };
 
